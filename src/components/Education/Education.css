@@ -1,0 +1,214 @@
+.education {
+  background: var(--bg-secondary);
+}
+
+/* Timeline Container */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Timeline Item */
+.timeline-item {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline Marker */
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.timeline-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary);
+  font-size: 1.25rem;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition-normal);
+}
+
+.timeline-item:hover .timeline-icon {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.timeline-line {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(
+    180deg,
+    var(--accent-primary) 0%,
+    rgba(100, 255, 218, 0.2) 100%
+  );
+  margin-top: 8px;
+  min-height: 100px;
+}
+
+/* Timeline Content */
+.timeline-content {
+  flex: 1;
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  transition: var(--transition-normal);
+}
+
+.timeline-content:hover {
+  border-color: var(--accent-primary);
+  transform: translateX(8px);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.timeline-degree {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.degree-title {
+  font-family: "Fira Code", monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.degree-field {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.timeline-period {
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  color: var(--accent-highlight);
+  background: rgba(240, 180, 41, 0.1);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.timeline-institution {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.timeline-institution svg {
+  color: var(--accent-primary);
+}
+
+/* Timeline Details */
+.timeline-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-family: "Fira Code", monospace;
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detail-value {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.detail-item.thesis .detail-value {
+  font-style: italic;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .timeline-item {
+    gap: 20px;
+  }
+
+  .timeline-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .timeline-content {
+    padding: 20px;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+  }
+
+  .degree-title {
+    font-size: 1.1rem;
+  }
+
+  .degree-field {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-item {
+    gap: 16px;
+  }
+
+  .timeline-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  .timeline-content {
+    padding: 16px;
+  }
+
+  .degree-title {
+    font-size: 1rem;
+  }
+
+  .detail-value {
+    font-size: 0.9rem;
+  }
+}

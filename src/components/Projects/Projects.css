@@ -1,0 +1,251 @@
+.projects {
+  background: var(--bg-primary);
+}
+
+/* Featured Project */
+.featured-project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  margin-bottom: 60px;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-project::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(100, 255, 218, 0.03) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.featured-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featured-label {
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.featured-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.featured-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.featured-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tech-tag {
+  font-family: "Fira Code", monospace;
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+  background: rgba(100, 255, 218, 0.1);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+}
+
+.featured-links {
+  display: flex;
+  gap: 20px;
+}
+
+.featured-links a {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+
+.featured-links a:hover {
+  color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.featured-image {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-image-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  background: rgba(100, 255, 218, 0.05);
+  border-radius: var(--radius-lg);
+  border: 2px dashed rgba(100, 255, 218, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-image-placeholder span {
+  font-size: 4rem;
+  color: var(--accent-primary);
+  opacity: 0.3;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+/* Project Card */
+.project-card {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-normal);
+  cursor: pointer;
+}
+
+.project-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.folder-icon {
+  font-size: 2.5rem;
+  color: var(--accent-primary);
+}
+
+.project-links {
+  display: flex;
+  gap: 16px;
+}
+
+.project-links a {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+
+.project-links a:hover {
+  color: var(--accent-primary);
+}
+
+.project-title {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  transition: var(--transition-fast);
+}
+
+.project-card:hover .project-title {
+  color: var(--accent-primary);
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.project-tech span {
+  font-family: "Fira Code", monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* View More Button */
+.projects-more {
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-project {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .featured-image {
+    order: -1;
+  }
+
+  .featured-image-placeholder {
+    min-height: 200px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-project {
+    padding: 20px;
+  }
+
+  .project-card {
+    padding: 20px;
+  }
+
+  .featured-title {
+    font-size: 1.3rem;
+  }
+}
