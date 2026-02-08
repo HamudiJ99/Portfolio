@@ -61,11 +61,6 @@
   color: var(--accent-primary);
 }
 
-.tech-list li::before {
-  content: "▹";
-  color: var(--accent-primary);
-}
-
 .tech-icon {
   font-size: 1.1rem;
   color: var(--accent-primary);

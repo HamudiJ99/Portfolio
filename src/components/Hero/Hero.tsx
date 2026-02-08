@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
 import './Hero.css';
 
 // Particle class for the ASCII art effect
@@ -138,27 +138,40 @@ const Hero = () => {
       const imageData = tempCtx.getImageData(0, 0, drawWidth, drawHeight);
       const data = imageData.data;
 
-      const characters = ['@', '#', '*', '+', '=', '-', ':', '.'];
-      const gap = 6; // Space between particles
+      // Characters from dense to sparse for inverted effect (dark areas = dense chars)
+      const characters = ['@', '#', 'W', '%', '8', '&', '*', '+', '=', '-', ':', '.', ' '];
+      const gap = 5; // Space between particles - smaller = more detail
       
       const offsetX = (canvas.width - drawWidth) / 2;
       const offsetY = (canvas.height - drawHeight) / 2;
 
+      // Brightness threshold to filter out white/light background
+      const brightnessThreshold = 220; // Pixels brighter than this are considered background
+
       for (let y = 0; y < drawHeight; y += gap) {
         for (let x = 0; x < drawWidth; x += gap) {
-          const index = (y * drawWidth + x) * 4;
+          const index = (Math.floor(y) * Math.floor(drawWidth) + Math.floor(x)) * 4;
           const red = data[index];
           const green = data[index + 1];
           const blue = data[index + 2];
           const alpha = data[index + 3];
 
-          if (alpha > 128) {
-            const brightness = (red + green + blue) / 3;
-            const charIndex = Math.floor((brightness / 255) * (characters.length - 1));
-            const character = characters[charIndex];
+          const brightness = (red + green + blue) / 3;
+
+          // Only render pixels that are NOT the white background (darker pixels = person)
+          if (alpha > 128 && brightness < brightnessThreshold) {
+            // Invert: darker pixels get denser characters
+            const invertedBrightness = 255 - brightness;
+            const charIndex = Math.floor((invertedBrightness / 255) * (characters.length - 2));
+            const character = characters[Math.min(charIndex, characters.length - 2)];
             
-            // Use cyan/teal color scheme
-            const color = `rgb(${Math.min(100 + brightness * 0.4, 255)}, ${Math.min(200 + brightness * 0.2, 255)}, ${Math.min(180 + brightness * 0.3, 255)})`;
+            // Create a cyan/teal gradient based on brightness
+            // Darker areas of person = brighter teal color
+            const colorIntensity = (255 - brightness) / 255;
+            const r = Math.floor(50 + colorIntensity * 50);
+            const g = Math.floor(180 + colorIntensity * 75);
+            const b = Math.floor(160 + colorIntensity * 58);
+            const color = `rgb(${r}, ${Math.min(g, 255)}, ${Math.min(b, 218)})`;
             
             particlesRef.current.push(
               new Particle(x + offsetX, y + offsetY, color, character)
@@ -262,7 +275,7 @@ const Hero = () => {
     { type: 'comment', text: '// feel free to explore' },
     { type: 'empty', text: '' },
     { type: 'keyword', prefix: 'const ', name: 'developer', operator: ' = ', value: '"Muhamed Jaber"' },
-    { type: 'keyword', prefix: 'const ', name: 'role', operator: ' = ', value: '"Software Engineer"' },
+    { type: 'keyword', prefix: 'const ', name: 'role', operator: ' = ', value: '"System Engineer"' },
     { type: 'empty', text: '' },
     { type: 'comment', text: '// find me on GitHub:' },
     { type: 'link', prefix: 'const ', name: 'github', operator: ' = ', value: '"https://github.com/HamudiJ99"', isLink: true },
@@ -294,7 +307,7 @@ const Hero = () => {
               </h1>
               
               <p className="hero-role">
-                <span className="code-symbol">&gt;</span> Software Engineer
+                <span className="code-symbol">&gt;</span> System Engineer
               </p>
               
               <div className="hero-code-lines">
@@ -343,8 +356,8 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5 }}
               >
-                <a href="#projects" className="btn btn-outline">
-                  <FaGithub /> View Projects
+                <a href="#contact" className="btn btn-outline">
+                  <FaEnvelope /> Contact me
                 </a>
               </motion.div>
             </div>
@@ -355,7 +368,7 @@ const Hero = () => {
         <motion.div 
           className="hero-image"
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 1, scale: 1.0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <div className="ascii-container">
@@ -364,7 +377,7 @@ const Hero = () => {
               className={`ascii-canvas ${isImageLoaded ? 'loaded' : ''}`}
             />
             <div className="ascii-glow"></div>
-            <p className="ascii-hint">hover over me</p>
+            <p className="ascii-hint">Thats Ascii me</p>
           </div>
         </motion.div>
       </div>

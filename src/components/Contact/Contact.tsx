@@ -36,12 +36,12 @@ const Contact = () => {
     {
       icon: <FaLinkedin />,
       label: 'LinkedIn',
-      value: 'muhamed-jaber-090257185',
+      value: 'LinkedIn.com',
       href: 'https://linkedin.com/in/muhamed-jaber-090257185',
     },
   ];
 
-  const quickActions = [
+/*   const quickActions = [
     {
       icon: <FaGithub />,
       label: 'GitHub',
@@ -57,7 +57,7 @@ const Contact = () => {
       label: 'Email',
       href: 'mailto:hamudij8@gmail.com',
     },
-  ];
+  ]; */
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -239,7 +239,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="quick-actions-card">
+{/*             <div className="quick-actions-card">
               <h3>Quick Actions</h3>
               <div className="quick-actions">
                 {quickActions.map((action, index) => (
@@ -257,7 +257,7 @@ const Contact = () => {
                   </motion.a>
                 ))}
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>

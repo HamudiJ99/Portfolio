@@ -10,12 +10,12 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-brand">
             <span className="footer-logo code-font">Muhamed Jaber</span>
-            <p>Software Engineer & Systems Developer</p>
+            <p>System Engineer & Software Developer</p>
           </div>
 
           <div className="footer-links">
             <a 
-              href="https://github.com/yourusername" 
+              href="https://github.com/HamudiJ99" 
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="GitHub"

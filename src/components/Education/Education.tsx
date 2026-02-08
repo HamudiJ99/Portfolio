@@ -1,7 +1,8 @@
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { motion } from 'framer-motion';
 import { FaGraduationCap, FaUniversity } from 'react-icons/fa';
 import './Education.css';
+
 
 interface EducationItem {
   degree: string;
@@ -16,21 +17,21 @@ interface EducationItem {
 const Education = () => {
   const educationData: EducationItem[] = [
     {
-      degree: 'M. Sc.',
+      degree: 'M.Sc.',
       field: 'Systems Engineering',
-      specialization: 'Automatisierungstechnik und Robotik',
-      thesis: 'Entwicklung eines Systems zur Katalogisierung variantenreicher Produkte in Expertensystemen',
-      institution: 'Universität Bremen',
-      period: '2020 - 2023',
+      specialization: 'Automation Technology and Robotics',
+      thesis: 'Development of a system for cataloging highly variant products in expert systems',
+      institution: 'University of Bremen',
+      period: '2023 - 2025',
       icon: <FaGraduationCap />,
     },
     {
-      degree: 'B. Sc.',
+      degree: 'B.Sc.',
       field: 'Systems Engineering',
-      specialization: 'Eingebettete Systeme und Systemsoftware',
-      thesis: 'Entwicklung einer Schnittstelle zur automatisierten Ablage von Messdaten in einem elektronischen Laborbuch',
-      institution: 'Universität Bremen',
-      period: '2016 - 2020',
+      specialization: 'Embedded Systems and System Software',
+      thesis: 'Development of an interface for automated storage of measurement data in an electronic laboratory notebook',
+      institution: 'University of Bremen',
+      period: '2018 - 2023',
       icon: <FaUniversity />,
     },
   ];
@@ -108,11 +109,11 @@ const Education = () => {
 
                 <div className="timeline-details">
                   <div className="detail-item">
-                    <span className="detail-label">Vertiefungsrichtung:</span>
+                    <span className="detail-label">specialization:</span>
                     <span className="detail-value">{item.specialization}</span>
                   </div>
                   <div className="detail-item thesis">
-                    <span className="detail-label">Thesis:</span>
+                    <span className="detail-label">thesis:</span>
                     <span className="detail-value">{item.thesis}</span>
                   </div>
                 </div>

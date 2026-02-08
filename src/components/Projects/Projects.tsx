@@ -13,50 +13,50 @@ interface Project {
 
 const Projects = () => {
   const featuredProject: Project = {
-    title: 'Aktuelles Projekt',
-    description: 'Hier kommt die Beschreibung deines aktuellen Hauptprojekts. Beschreibe was das Projekt macht, welche Probleme es löst und was dein Beitrag dazu ist. Dies ist der Bereich für dein wichtigstes oder aktuellstes Projekt.',
-    technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
-    github: 'https://github.com/yourusername/project',
-    live: 'https://yourproject.com',
+    title: 'ContentLab',
+    description: 'ContentLab is a modern and user-friendly platform for creating and managing online courses. It is designed for educators, companies, and educational institutions that want to professionally prepare and deliver digital learning content.',
+    technologies: ['React', 'TypeScript', 'Vite', 'Firebase', 'MUI'],
+    github: 'https://github.com/Hamudij99/contentlab',
+    live: 'https://contentlab-6d713.web.app/home',
     featured: true,
   };
 
   const projects: Project[] = [
     {
       title: 'Projekt Eins',
-      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen. Hier erklärst du was das Projekt macht.',
+      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
       technologies: ['Python', 'Flask', 'Vue.js'],
       github: 'https://github.com/yourusername/project1',
       live: 'https://project1.com',
     },
     {
       title: 'Projekt Zwei',
-      description: 'Beschreibung eines weiteren interessanten Projekts. Zeige deine Fähigkeiten und was du gebaut hast.',
+      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
       technologies: ['Java', 'Spring Boot', 'React'],
       github: 'https://github.com/yourusername/project2',
     },
     {
       title: 'Projekt Drei',
-      description: 'Ein System oder eine Anwendung die du entwickelt hast. Beschreibe die technischen Details.',
+      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
       technologies: ['C#', '.NET', 'Azure'],
       github: 'https://github.com/yourusername/project3',
       live: 'https://project3.com',
     },
     {
       title: 'Projekt Vier',
-      description: 'Noch ein weiteres Projekt das deine Vielseitigkeit zeigt. Embedded Systems, Robotik, etc.',
+      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
       technologies: ['C++', 'ROS', 'Python'],
       github: 'https://github.com/yourusername/project4',
     },
     {
       title: 'Projekt Fünf',
-      description: 'Ein Projekt mit Machine Learning oder Data Science Fokus. Zeige deine analytischen Fähigkeiten.',
+      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
       technologies: ['Python', 'TensorFlow', 'Pandas'],
       github: 'https://github.com/yourusername/project5',
     },
     {
       title: 'Projekt Sechs',
-      description: 'Ein weiteres interessantes Projekt. Open Source Beiträge oder persönliche Projekte.',
+      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
       technologies: ['TypeScript', 'Express', 'MongoDB'],
       github: 'https://github.com/yourusername/project6',
       live: 'https://project6.com',
@@ -109,7 +109,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="featured-content">
-            <span className="featured-label">Aktuelles Projekt</span>
+            <span className="featured-label">Current Project</span>
             <h3 className="featured-title">{featuredProject.title}</h3>
             <p className="featured-description">{featuredProject.description}</p>
             
@@ -144,9 +144,7 @@ const Projects = () => {
           </div>
           
           <div className="featured-image">
-            <div className="featured-image-placeholder">
-              <span className="code-font">{'{ }'}</span>
-            </div>
+            <img src="/featured-project.jpg" alt="Featured Project" className="featured-img" />
           </div>
         </motion.div>
 
@@ -212,7 +210,7 @@ const Projects = () => {
           transition={{ delay: 0.5 }}
         >
           <a 
-            href="https://github.com/yourusername" 
+            href="https://github.com/HamudiJ99" 
             target="_blank" 
             rel="noopener noreferrer"
             className="btn btn-outline"

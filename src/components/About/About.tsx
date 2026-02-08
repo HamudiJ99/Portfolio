@@ -5,12 +5,12 @@ import './About.css';
 
 const About = () => {
   const technologies = [
-    { name: 'Python', icon: <FaPython /> },
     { name: 'TypeScript', icon: <SiTypescript /> },
+    { name: 'Java', icon: <FaJava />},
     { name: 'React.js', icon: <FaReact /> },
-    { name: 'Java', icon: <FaJava /> },
-    { name: 'JavaScript ES6+', icon: <SiJavascript /> },
-    { name: 'C/C++', icon: <SiCplusplus /> },
+    { name: 'JavaScript', icon: <SiJavascript />  },
+    { name: 'Python', icon: <FaPython />  },
+    { name: 'C++', icon: <SiCplusplus /> },
   ];
 
   const containerVariants = {
@@ -55,19 +55,18 @@ const About = () => {
           >
             <div className="about-text">
               <p>
-                I am a <span className="highlight-text">Software Engineer</span> with a passion 
+                I am a <span className="highlight-text">Systems Engineer</span> with a passion 
                 for developing innovative solutions and working on complex systems. I completed my 
                 Master's degree in <span className="highlight-text">Systems Engineering</span> with a focus on 
                 Automation and Robotics at the <span className="highlight-text">University of Bremen</span>.
               </p>
               <p>
-                My journey in software development started during my studies, where I discovered 
+                My journey in software development started during my bachelor studies, where I discovered 
                 my enthusiasm for embedded systems and system software. I enjoy tackling challenging 
                 problems and building efficient, scalable applications.
               </p>
               <p>
-                When I'm not coding, I'm exploring new technologies, contributing to open-source 
-                projects, or diving deep into robotics and automation research.
+                When I'm not coding, I love exploring new technologies. Outside of tech, I'm a passionate runner and swimmer, like going cycling, and enjoy hiking in the mountains. Regular fitness training is also an essential part of my routine.
               </p>
             </div>
 
@@ -100,7 +99,7 @@ const About = () => {
           >
             <div className="about-image-container">
               <img 
-                src="/profile-about.jpg" 
+                src="/aboutMeProfile.jpg" 
                 alt="Muhamed Jaber"
                 className="about-image"
                 onError={(e) => {
