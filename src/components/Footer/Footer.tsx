@@ -1,6 +1,13 @@
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa';
 import './Footer.css';
 
+const scrollToSection = (href: string) => {
+  const element = document.querySelector(href);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -31,8 +38,12 @@ const Footer = () => {
               <FaLinkedin />
             </a>
             <a 
-              href="mailto:hamudij8@gmail.com"
+              href="#contact"
               aria-label="Email"
+              onClick={e => {
+                e.preventDefault();
+                scrollToSection('#contact');
+              }}
             >
               <FaEnvelope />
             </a>

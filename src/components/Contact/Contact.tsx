@@ -5,7 +5,6 @@ import {
   FaPhone, 
   FaEnvelope, 
   FaLinkedin, 
-  FaGithub,
   FaMapMarkerAlt 
 } from 'react-icons/fa';
 import './Contact.css';
@@ -68,14 +67,32 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    // In production, replace this with actual form submission logic
-    // For example, using EmailJS, Formspree, or your own backend
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch {
+      // Send email using FormSubmit.co (free service, no backend needed)
+      const response = await fetch('https://formsubmit.co/ajax/1bd1c5f11d8368d8c6bb32984400ddc0', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || 'Portfolio Contact Form',
+          message: formData.message,
+          _captcha: 'false', // Disable captcha
+          _template: 'table', // Use table template for better formatting
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Failed to send');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

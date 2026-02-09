@@ -1,67 +1,24 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaFolder } from 'react-icons/fa';
+import { projectsData, featuredProject } from '../../data/projectsData';
+import type { ProjectData } from '../../data/projectsData';
+import ProjectModal from './ProjectModal';
 import './Projects.css';
 
-interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  github?: string;
-  live?: string;
-  featured?: boolean;
-}
-
 const Projects = () => {
-  const featuredProject: Project = {
-    title: 'ContentLab',
-    description: 'ContentLab is a modern and user-friendly platform for creating and managing online courses. It is designed for educators, companies, and educational institutions that want to professionally prepare and deliver digital learning content.',
-    technologies: ['React', 'TypeScript', 'Vite', 'Firebase', 'MUI'],
-    github: 'https://github.com/Hamudij99/contentlab',
-    live: 'https://contentlab-6d713.web.app/home',
-    featured: true,
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (project: ProjectData) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
   };
 
-  const projects: Project[] = [
-    {
-      title: 'Projekt Eins',
-      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
-      technologies: ['Python', 'Flask', 'Vue.js'],
-      github: 'https://github.com/yourusername/project1',
-      live: 'https://project1.com',
-    },
-    {
-      title: 'Projekt Zwei',
-      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
-      technologies: ['Java', 'Spring Boot', 'React'],
-      github: 'https://github.com/yourusername/project2',
-    },
-    {
-      title: 'Projekt Drei',
-      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
-      technologies: ['C#', '.NET', 'Azure'],
-      github: 'https://github.com/yourusername/project3',
-      live: 'https://project3.com',
-    },
-    {
-      title: 'Projekt Vier',
-      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
-      technologies: ['C++', 'ROS', 'Python'],
-      github: 'https://github.com/yourusername/project4',
-    },
-    {
-      title: 'Projekt Fünf',
-      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
-      technologies: ['Python', 'TensorFlow', 'Pandas'],
-      github: 'https://github.com/yourusername/project5',
-    },
-    {
-      title: 'Projekt Sechs',
-      description: 'Eine kurze Beschreibung des Projekts und seiner Hauptfunktionen.',
-      technologies: ['TypeScript', 'Express', 'MongoDB'],
-      github: 'https://github.com/yourusername/project6',
-      live: 'https://project6.com',
-    },
-  ];
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -111,7 +68,7 @@ const Projects = () => {
           <div className="featured-content">
             <span className="featured-label">Current Project</span>
             <h3 className="featured-title">{featuredProject.title}</h3>
-            <p className="featured-description">{featuredProject.description}</p>
+            <p className="featured-description">{featuredProject.shortDescription}</p>
             
             <div className="featured-tech">
               {featuredProject.technologies.map((tech, index) => (
@@ -144,7 +101,7 @@ const Projects = () => {
           </div>
           
           <div className="featured-image">
-            <img src="/featured-project.jpg" alt="Featured Project" className="featured-img" />
+            <img src="../../../public/featured-project.jpg" alt="ContentLab" className="featured-img" />
           </div>
         </motion.div>
 
@@ -156,12 +113,14 @@ const Projects = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {projects.map((project, index) => (
+          {projectsData.map((project) => (
             <motion.div
-              key={index}
+              key={project.id}
               className="project-card"
               variants={itemVariants}
               whileHover={{ y: -10 }}
+              onClick={() => openModal(project)}
+              style={{ cursor: 'pointer' }}
             >
               <div className="project-card-header">
                 <FaFolder className="folder-icon" />
@@ -172,6 +131,7 @@ const Projects = () => {
                       target="_blank" 
                       rel="noopener noreferrer"
                       aria-label="GitHub Repository"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <FaGithub />
                     </a>
@@ -182,6 +142,7 @@ const Projects = () => {
                       target="_blank" 
                       rel="noopener noreferrer"
                       aria-label="Live Demo"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <FaExternalLinkAlt />
                     </a>
@@ -190,10 +151,10 @@ const Projects = () => {
               </div>
               
               <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
+              <p className="project-description">{project.shortDescription}</p>
               
               <div className="project-tech">
-                {project.technologies.map((tech, techIndex) => (
+                {project.technologies.slice(0, 4).map((tech, techIndex) => (
                   <span key={techIndex}>{tech}</span>
                 ))}
               </div>
@@ -219,6 +180,13 @@ const Projects = () => {
           </a>
         </motion.div>
       </div>
+
+      {/* Project Detail Modal */}
+      <ProjectModal 
+        project={selectedProject} 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+      />
     </section>
   );
 };
