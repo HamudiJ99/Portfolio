@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import { 
   FaPaperPlane, 
   FaPhone, 
@@ -68,24 +69,26 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Send email using FormSubmit.co (free service, no backend needed)
-      const response = await fetch('https://formsubmit.co/ajax/1bd1c5f11d8368d8c6bb32984400ddc0', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
+      // EmailJS configuration - Replace with your own values from emailjs.com
+      const serviceId = 'service_7qkjr5k';      // Get from EmailJS Dashboard
+      const templateId = 'template_t26141s';    // Get from EmailJS Dashboard
+      const publicKey = 'RmwjpixdRuJZrY3Ai';      // Get from EmailJS Dashboard
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
           subject: formData.subject || 'Portfolio Contact Form',
           message: formData.message,
-          _captcha: 'false', // Disable captcha
-          _template: 'table', // Use table template for better formatting
-        })
-      });
+          to_email: 'hamudij8@gmail.com',
+        },
+        publicKey
+      );
 
-      if (response.ok) {
+      if (result.status === 200) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
