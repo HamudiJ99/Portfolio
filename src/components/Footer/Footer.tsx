@@ -54,9 +54,19 @@ const Footer = () => {
           <p>
             Designed & Built with <FaHeart className="heart-icon" /> by Muhamed Jaber
           </p>
-          <p className="footer-copyright">
-            © {currentYear} All rights reserved
-          </p>
+          <div className="footer-legal">
+            <a 
+              href="/privacy.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Datenschutzerklärung
+            </a>
+            <span className="footer-separator">|</span>
+            <span className="footer-copyright">
+              © {currentYear} All rights reserved
+            </span>
+          </div>
         </div>
       </div>
     </footer>

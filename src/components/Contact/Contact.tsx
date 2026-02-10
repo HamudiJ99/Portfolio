@@ -16,6 +16,7 @@ const Contact = () => {
     email: '',
     subject: '',
     message: '',
+    consent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -60,8 +61,12 @@ const Contact = () => {
   ]; */
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const target = e.target as HTMLInputElement;
+    const { name, value, type, checked } = target;
+    setFormData(prev => ({ 
+      ...prev, 
+      [name]: type === 'checkbox' ? checked : value 
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -90,7 +95,7 @@ const Contact = () => {
 
       if (result.status === 200) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', subject: '', message: '', consent: false });
       } else {
         throw new Error('Failed to send');
       }
@@ -188,10 +193,33 @@ const Contact = () => {
                 />
               </div>
 
+              <div className="form-group consent-group">
+                <label className="consent-label">
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    checked={formData.consent}
+                    onChange={handleChange}
+                    required
+                  />
+                  <span>
+                    Ich habe die{' '}
+                    <a 
+                      href="/privacy.html" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Datenschutzerklärung
+                    </a>
+                    {' '}gelesen und akzeptiere die Verarbeitung meiner Daten.
+                  </span>
+                </label>
+              </div>
+
               <button 
                 type="submit" 
                 className={`btn btn-primary submit-btn ${isSubmitting ? 'submitting' : ''}`}
-                disabled={isSubmitting}
+                disabled={isSubmitting || !formData.consent}
               >
                 {isSubmitting ? (
                   <>
