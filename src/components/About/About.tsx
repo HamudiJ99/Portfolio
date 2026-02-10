@@ -39,7 +39,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="section-title">
-            <span>/</span> about me
+            <span>//</span> about me
           </h2>
           <div className="section-line"></div>
         </motion.div>

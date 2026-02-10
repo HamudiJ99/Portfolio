@@ -6,22 +6,23 @@
 
 :root {
   /* Color Palette - Dark Theme */
-  --bg-primary: #0a192f;
-  --bg-secondary: #112240;
-  --bg-tertiary: #1d3461;
+
+  --bg-primary: #101e36;
+  --bg-secondary: #182b48;
+  --bg-tertiary: #21395c;
 
   /* Accent Colors */
-  --accent-primary: #64ffda;
-  --accent-secondary: #8892b0;
-  --accent-tertiary: #ccd6f6;
-  --accent-highlight: #f0b429;
-  --accent-purple: #a855f7;
-  --accent-pink: #ec4899;
+  --accent-primary: #36b6e6;
+  --accent-secondary: #5e8bb8;
+  --accent-tertiary: #8cb3d6;
+  --accent-highlight: #ffd166;
+  --accent-purple: #5f6ac4;
+  --accent-pink: #e26d8a;
 
   /* Text Colors */
   --text-primary: #e6f1ff;
-  --text-secondary: #8892b0;
-  --text-muted: #495670;
+  --text-secondary: #a3b8d8;
+  --text-muted: #5a6b8a;
 
   /* Code Colors */
   --code-keyword: #c792ea;

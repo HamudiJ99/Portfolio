@@ -165,14 +165,13 @@ const Hero = () => {
             const charIndex = Math.floor((invertedBrightness / 255) * (characters.length - 2));
             const character = characters[Math.min(charIndex, characters.length - 2)];
             
-            // Create a cyan/teal gradient based on brightness
-            // Darker areas of person = brighter teal color
+            // Use a blue tone based on rgb(53, 182, 230)
             const colorIntensity = (255 - brightness) / 255;
-            const r = Math.floor(50 + colorIntensity * 50);
-            const g = Math.floor(180 + colorIntensity * 75);
-            const b = Math.floor(160 + colorIntensity * 58);
-            const color = `rgb(${r}, ${Math.min(g, 255)}, ${Math.min(b, 218)})`;
-            
+            const r = Math.round(33 + colorIntensity * 20); // 33-53
+            const g = Math.round(132 + colorIntensity * 50); // 132-182
+            const b = Math.round(180 + colorIntensity * 50); // 180-230
+            const color = `rgb(${r}, ${g}, ${b})`;
+
             particlesRef.current.push(
               new Particle(x + offsetX, y + offsetY, color, character)
             );
@@ -198,24 +197,29 @@ const Hero = () => {
         for (let r = 20; r < maxRadius; r += 6) {
           // Create head and shoulders shape
           let radius = r;
-          
+
           // Head (top circle)
           if (angle > Math.PI * 0.25 && angle < Math.PI * 0.75) {
             radius = r * (1 - (angle - Math.PI * 0.5) * 0.3);
           }
-          
+
           // Shoulders (wider at bottom)
           if (angle > Math.PI * 0.75 || angle < Math.PI * 0.25) {
             radius = r * 1.2;
           }
-          
+
           const x = centerX + Math.cos(angle) * radius * 0.8;
           const y = centerY + Math.sin(angle) * radius - maxRadius * 0.3;
-          
+
           const brightness = 150 + Math.random() * 100;
-          const color = `rgb(${Math.min(100 + brightness * 0.3, 200)}, ${Math.min(200 + brightness * 0.2, 255)}, ${Math.min(180 + brightness * 0.3, 230)})`;
+          // Blue fallback color based on rgb(53, 182, 230)
+          const colorIntensity = (brightness - 150) / 100; // 0-1
+          const rCol = Math.round(33 + colorIntensity * 20); // 33-53
+          const gCol = Math.round(132 + colorIntensity * 50); // 132-182
+          const bCol = Math.round(180 + colorIntensity * 50); // 180-230
+          const color = `rgb(${rCol}, ${gCol}, ${bCol})`;
           const char = characters[Math.floor(Math.random() * characters.length)];
-          
+
           particlesRef.current.push(new Particle(x, y, color, char));
         }
       }

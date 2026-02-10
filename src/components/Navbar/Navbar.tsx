@@ -82,7 +82,7 @@ const Navbar = () => {
         {/* Social Icons */}
         <div className="navbar-socials">
           <motion.a 
-            href="https://github.com/HamudiJ99" 
+            href="https://github.com/yourusername" 
             target="_blank" 
             rel="noopener noreferrer"
             whileHover={{ scale: 1.1 }}
@@ -153,7 +153,7 @@ const Navbar = () => {
           ))}
         </ul>
         <div className="mobile-socials">
-          <a href="https://github.com/HamudiJ99" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
             <FaGithub />
           </a>
           <a href="https://linkedin.com/in/muhamed-jaber-090257185" target="_blank" rel="noopener noreferrer">

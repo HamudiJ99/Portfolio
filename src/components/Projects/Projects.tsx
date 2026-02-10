@@ -52,7 +52,7 @@ const Projects = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="section-title">
-            <span>/</span> projects
+            <span>//</span> projects
           </h2>
           <div className="section-line"></div>
         </motion.div>
