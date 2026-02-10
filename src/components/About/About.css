@@ -28,6 +28,11 @@
   color: var(--text-secondary);
 }
 
+.about-text .highlight {
+  color: var(--accent-primary);
+  font-weight: 500;
+}
+
 /* Tech Stack */
 .tech-stack h3 {
   font-size: 1rem;

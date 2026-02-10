@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { FaTimes, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import type { ProjectData } from '../../data/projectsData';
 import './ProjectModal.css';
@@ -11,6 +12,7 @@ interface ProjectModalProps {
 }
 
 const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
+  const { t } = useTranslation();
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -71,7 +73,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                     rel="noopener noreferrer"
                     className="modal-link"
                   >
-                    <FaGithub /> GitHub
+                    <FaGithub /> {t('projects.viewCode')}
                   </a>
                 )}
                 {project.live && (
@@ -81,7 +83,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                     rel="noopener noreferrer"
                     className="modal-link"
                   >
-                    <FaExternalLinkAlt /> Live Demo
+                    <FaExternalLinkAlt /> {t('projects.viewProject')}
                   </a>
                 )}
               </div>
@@ -93,7 +95,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
               </div>
 
               <div className="modal-technologies">
-                <h3>Technologies</h3>
+                <h3>{t('projects.technologies')}</h3>
                 <div className="modal-tech-list">
                   {project.technologies.map((tech, index) => (
                     <span key={index} className="modal-tech-tag">

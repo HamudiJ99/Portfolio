@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { FaEnvelope } from 'react-icons/fa';
 import './Hero.css';
 
@@ -70,6 +71,7 @@ class Particle {
 }
 
 const Hero = () => {
+  const { t } = useTranslation();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const particlesRef = useRef<Particle[]>([]);
@@ -275,13 +277,13 @@ const Hero = () => {
   }, []);
 
   const codeLines = [
-    { type: 'comment', text: '// welcome to my portfolio' },
-    { type: 'comment', text: '// feel free to explore' },
+    { type: 'comment', text: t('hero.welcomeComment') },
+    { type: 'comment', text: t('hero.exploreComment') },
     { type: 'empty', text: '' },
     { type: 'keyword', prefix: 'const ', name: 'developer', operator: ' = ', value: '"Muhamed Jaber"' },
-    { type: 'keyword', prefix: 'const ', name: 'role', operator: ' = ', value: '"System Engineer"' },
+    { type: 'keyword', prefix: 'const ', name: 'role', operator: ' = ', value: `"${t('hero.role')}"` },
     { type: 'empty', text: '' },
-    { type: 'comment', text: '// find me on GitHub:' },
+    { type: 'comment', text: t('hero.githubComment') },
     { type: 'link', prefix: 'const ', name: 'github', operator: ' = ', value: '"https://github.com/HamudiJ99"', isLink: true },
   ];
 
@@ -304,14 +306,14 @@ const Hero = () => {
             </div>
             
             <div className="code-content">
-              <p className="code-greeting">Hi all. I am</p>
+              <p className="code-greeting">{t('hero.greeting')}</p>
               
               <h1 className="hero-name">
                 Muhamed Jaber
               </h1>
               
               <p className="hero-role">
-                <span className="code-symbol">&gt;</span> System Engineer
+                <span className="code-symbol">&gt;</span> {t('hero.role')}
               </p>
               
               <div className="hero-code-lines">
@@ -361,7 +363,7 @@ const Hero = () => {
                 transition={{ delay: 1.5 }}
               >
                 <a href="#contact" className="btn btn-outline">
-                  <FaEnvelope /> Contact me
+                  <FaEnvelope /> {t('hero.ctaButton')}
                 </a>
               </motion.div>
             </div>
@@ -381,7 +383,7 @@ const Hero = () => {
               className={`ascii-canvas ${isImageLoaded ? 'loaded' : ''}`}
             />
             <div className="ascii-glow"></div>
-            <p className="ascii-hint">Thats Ascii me</p>
+            <p className="ascii-hint">{t('hero.asciiHint')}</p>
           </div>
         </motion.div>
       </div>
@@ -394,7 +396,7 @@ const Hero = () => {
         transition={{ delay: 2 }}
       >
         <div className="scroll-line"></div>
-        <span>scroll</span>
+        <span>{t('hero.scrollHint')}</span>
       </motion.div>
     </section>
   );

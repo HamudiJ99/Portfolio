@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
+import { useTranslation, Trans } from 'react-i18next';
 import { FaPython, FaReact, FaJava } from 'react-icons/fa';
 import { SiTypescript, SiJavascript, SiCplusplus } from 'react-icons/si';
 import './About.css';
 
 const About = () => {
+  const { t } = useTranslation();
   const technologies = [
     { name: 'TypeScript', icon: <SiTypescript /> },
     { name: 'Java', icon: <FaJava />},
@@ -39,7 +41,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="section-title">
-            <span>//</span> about me
+            <span>//</span> {t('about.title')}
           </h2>
           <div className="section-line"></div>
         </motion.div>
@@ -55,18 +57,19 @@ const About = () => {
           >
             <div className="about-text">
               <p>
-                I am a <span className="highlight-text">Systems Engineer</span> with a passion 
-                for developing innovative solutions and working on complex systems. I completed my 
-                Master's degree in <span className="highlight-text">Systems Engineering</span> with a focus on 
-                Automation and Robotics at the <span className="highlight-text">University of Bremen</span>.
+                <Trans 
+                  i18nKey="about.intro" 
+                  components={{ 1: <span className="highlight" />, 3: <span className="highlight" /> }}
+                />
               </p>
               <p>
-                My journey in software development started during my bachelor studies, where I discovered 
-                my enthusiasm for embedded systems and system software. I enjoy tackling challenging 
-                problems and building efficient, scalable applications.
+                <Trans 
+                  i18nKey="about.description" 
+                  components={{ 1: <span className="highlight" /> }}
+                />
               </p>
               <p>
-                When I'm not coding, I love exploring new technologies. Outside of tech, I'm a passionate runner and swimmer, like going cycling, and enjoy hiking in the mountains. Regular fitness training is also an essential part of my routine.
+                {t('about.passion')}
               </p>
             </div>
 
@@ -77,7 +80,7 @@ const About = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <h3>Technologies I work with:</h3>
+              <h3>{t('about.skillsTitle')}</h3>
               <ul className="tech-list">
                 {technologies.map((tech) => (
                   <motion.li key={tech.name} variants={itemVariants}>

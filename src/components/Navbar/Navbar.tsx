@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaGlobe } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import './Navbar.css';
 
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [langMenuOpen, setLangMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,11 +20,16 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.education'), href: '#education' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.contact'), href: '#contact' },
   ];
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    setLangMenuOpen(false);
+  };
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -79,10 +87,35 @@ const Navbar = () => {
         {/* Separator */}
         <div className="navbar-separator"></div>
 
+        {/* Language Switcher */}
+        <div className="language-switcher">
+          <button 
+            className="lang-btn"
+            onClick={() => setLangMenuOpen(!langMenuOpen)}
+            aria-label="Change language"
+          >
+            <FaGlobe />
+            <span>{i18n.language.toUpperCase()}</span>
+          </button>
+          {langMenuOpen && (
+            <div className="lang-dropdown">
+              <button onClick={() => changeLanguage('de')} className={i18n.language === 'de' ? 'active' : ''}>
+                Deutsch
+              </button>
+              <button onClick={() => changeLanguage('en')} className={i18n.language === 'en' ? 'active' : ''}>
+                English
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Separator */}
+        <div className="navbar-separator"></div>
+
         {/* Social Icons */}
         <div className="navbar-socials">
           <motion.a 
-            href="https://github.com/yourusername" 
+            href="https://github.com/HamudiJ99" 
             target="_blank" 
             rel="noopener noreferrer"
             whileHover={{ scale: 1.1 }}
@@ -153,7 +186,7 @@ const Navbar = () => {
           ))}
         </ul>
         <div className="mobile-socials">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/HamudiJ99" target="_blank" rel="noopener noreferrer">
             <FaGithub />
           </a>
           <a href="https://linkedin.com/in/muhamed-jaber-090257185" target="_blank" rel="noopener noreferrer">
@@ -162,6 +195,14 @@ const Navbar = () => {
           <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('#contact'); }}>
             <FaEnvelope />
           </a>
+        </div>
+        <div className="mobile-language">
+          <button onClick={() => changeLanguage('de')} className={i18n.language === 'de' ? 'active' : ''}>
+            Deutsch
+          </button>
+          <button onClick={() => changeLanguage('en')} className={i18n.language === 'en' ? 'active' : ''}>
+            English
+          </button>
         </div>
       </motion.div>
     </motion.nav>

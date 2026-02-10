@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { FaGraduationCap, FaUniversity } from 'react-icons/fa';
 import './Education.css';
 
@@ -15,23 +16,24 @@ interface EducationItem {
 }
 
 const Education = () => {
+  const { t } = useTranslation();
   const educationData: EducationItem[] = [
     {
-      degree: 'M.Sc.',
-      field: 'Systems Engineering',
-      specialization: 'Automation Technology and Robotics',
-      thesis: 'Development of a system for cataloging highly variant products in expert systems',
-      institution: 'University of Bremen',
-      period: '2023 - 2025',
+      degree: t('education.master.degree'),
+      field: t('education.master.field'),
+      specialization: t('education.master.specialization'),
+      thesis: t('education.master.thesis'),
+      institution: t('education.master.institution'),
+      period: t('education.master.period'),
       icon: <FaGraduationCap />,
     },
     {
-      degree: 'B.Sc.',
-      field: 'Systems Engineering',
-      specialization: 'Embedded Systems and System Software',
-      thesis: 'Development of an interface for automated storage of measurement data in an electronic laboratory notebook',
-      institution: 'University of Bremen',
-      period: '2018 - 2023',
+      degree: t('education.bachelor.degree'),
+      field: t('education.bachelor.field'),
+      specialization: t('education.bachelor.specialization'),
+      thesis: t('education.bachelor.thesis'),
+      institution: t('education.bachelor.institution'),
+      period: t('education.bachelor.period'),
       icon: <FaUniversity />,
     },
   ];
@@ -58,7 +60,7 @@ const Education = () => {
   };
 
   return (
-    <section className="education section">
+    <section id="education" className="education section">
       <div className="container">
         <motion.div
           className="section-header"
@@ -68,7 +70,7 @@ const Education = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="section-title">
-            <span>//</span> education
+            <span>//</span> {t('education.title')}
           </h2>
           <div className="section-line"></div>
         </motion.div>
@@ -109,11 +111,11 @@ const Education = () => {
 
                 <div className="timeline-details">
                   <div className="detail-item">
-                    <span className="detail-label">specialization:</span>
+                    <span className="detail-label">{t('education.specialization')}:</span>
                     <span className="detail-value">{item.specialization}</span>
                   </div>
                   <div className="detail-item thesis">
-                    <span className="detail-label">thesis:</span>
+                    <span className="detail-label">{t('education.thesis')}:</span>
                     <span className="detail-value">{item.thesis}</span>
                   </div>
                 </div>

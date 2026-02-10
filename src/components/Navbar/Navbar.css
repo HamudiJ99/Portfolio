@@ -109,6 +109,76 @@
   transform: translateY(-2px);
 }
 
+/* Language Switcher */
+.language-switcher {
+  position: relative;
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lang-btn:hover {
+  background: rgba(100, 255, 218, 0.1);
+  transform: translateY(-2px);
+}
+
+.lang-btn svg {
+  font-size: 1rem;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  min-width: 120px;
+  z-index: 1002;
+}
+
+.lang-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lang-dropdown button:hover {
+  background: rgba(100, 255, 218, 0.1);
+  color: var(--accent-primary);
+}
+
+.lang-dropdown button.active {
+  color: var(--accent-primary);
+  background: rgba(100, 255, 218, 0.05);
+}
+
+.lang-dropdown button:not(:last-child) {
+  border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
 /* Mobile Menu Button */
 .mobile-menu-btn {
   display: none;
@@ -200,6 +270,35 @@
   color: var(--accent-primary);
 }
 
+.mobile-language {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 20px 24px;
+  border-top: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.mobile-language button {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
+  border-radius: var(--radius-md);
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.mobile-language button:hover {
+  background: rgba(100, 255, 218, 0.1);
+}
+
+.mobile-language button.active {
+  background: rgba(100, 255, 218, 0.2);
+  font-weight: 600;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .navbar-separator {
@@ -211,6 +310,10 @@
   }
 
   .navbar-socials {
+    display: none;
+  }
+
+  .language-switcher {
     display: none;
   }
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { FaGithub, FaExternalLinkAlt, FaFolder } from 'react-icons/fa';
 import { projectsData, featuredProject } from '../../data/projectsData';
 import type { ProjectData } from '../../data/projectsData';
@@ -7,6 +8,7 @@ import ProjectModal from './ProjectModal';
 import './Projects.css';
 
 const Projects = () => {
+  const { t } = useTranslation();
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -52,7 +54,7 @@ const Projects = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="section-title">
-            <span>//</span> projects
+            <span>//</span> {t('projects.title')}
           </h2>
           <div className="section-line"></div>
         </motion.div>
@@ -66,7 +68,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="featured-content">
-            <span className="featured-label">Current Project</span>
+            <span className="featured-label">{t('projects.featuredLabel')}</span>
             <h3 className="featured-title">{featuredProject.title}</h3>
             <p className="featured-description">{featuredProject.shortDescription}</p>
             
@@ -176,7 +178,7 @@ const Projects = () => {
             rel="noopener noreferrer"
             className="btn btn-outline"
           >
-            <FaGithub /> View More on GitHub
+            <FaGithub /> {t('projects.viewMore')}
           </a>
         </motion.div>
       </div>

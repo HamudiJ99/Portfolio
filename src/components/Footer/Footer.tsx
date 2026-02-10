@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import './Footer.css';
 
 const scrollToSection = (href: string) => {
@@ -9,6 +10,7 @@ const scrollToSection = (href: string) => {
 };
 
 const Footer = () => {
+  const { t, i18n } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -52,19 +54,19 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>
-            Designed & Built with <FaHeart className="heart-icon" /> by Muhamed Jaber
+            {t('footer.designed')} <FaHeart className="heart-icon" /> {t('footer.by')}
           </p>
           <div className="footer-legal">
             <a 
-              href="/privacy.html"
+              href={i18n.language === 'de' ? '/privacy.html' : '/privacy-en.html'}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Datenschutzerklärung
+              {t('footer.privacy')}
             </a>
             <span className="footer-separator">|</span>
             <span className="footer-copyright">
-              © {currentYear} All rights reserved
+              © {currentYear} {t('footer.rights')}
             </span>
           </div>
         </div>

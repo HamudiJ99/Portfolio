@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import { useTranslation } from 'react-i18next';
 import { 
   FaPaperPlane, 
   FaPhone, 
@@ -11,6 +12,7 @@ import {
 import './Contact.css';
 
 const Contact = () => {
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -118,11 +120,10 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="contact-label">Get In Touch</span>
-          <h2 className="contact-title">Ready to Connect?</h2>
+          <span className="contact-label">{t('contact.title')}</span>
+          <h2 className="contact-title">{t('contact.subtitle')}</h2>
           <p className="contact-subtitle">
-            Let's discuss your next project or explore potential collaborations. 
-            I'm always excited to work on innovative solutions.
+            {t('contact.description')}
           </p>
         </motion.div>
 
@@ -137,57 +138,57 @@ const Contact = () => {
           >
             <div className="form-header">
               <FaPaperPlane />
-              <span>Send Message</span>
+              <span>{t('contact.form.submit')}</span>
             </div>
             
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="name">Name</label>
+                  <label htmlFor="name">{t('contact.form.name')}</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Your name"
+                    placeholder={t('contact.form.namePlaceholder')}
                     required
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email">{t('contact.form.email')}</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="your.email@example.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                     required
                   />
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="subject">Subject</label>
+                <label htmlFor="subject">{t('contact.form.subject')}</label>
                 <input
                   type="text"
                   id="subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Project discussion, collaboration, or consultation"
+                  placeholder={t('contact.form.subjectPlaceholder')}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">{t('contact.form.message')}</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell me about your project, requirements, or how we can work together..."
+                  placeholder={t('contact.form.messagePlaceholder')}
                   rows={5}
                   required
                 />
@@ -203,15 +204,15 @@ const Contact = () => {
                     required
                   />
                   <span>
-                    Ich habe die{' '}
+                    {t('contact.form.consent')}{' '}
                     <a 
-                      href="/privacy.html" 
+                      href={i18n.language === 'de' ? '/privacy.html' : '/privacy-en.html'}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Datenschutzerklärung
+                      {t('contact.form.privacy')}
                     </a>
-                    {' '}gelesen und akzeptiere die Verarbeitung meiner Daten.
+                    {' '}{t('contact.form.consentEnd')}
                   </span>
                 </label>
               </div>
@@ -224,24 +225,24 @@ const Contact = () => {
                 {isSubmitting ? (
                   <>
                     <span className="spinner"></span>
-                    Sending...
+                    {t('contact.form.sending')}
                   </>
                 ) : (
                   <>
                     <FaPaperPlane />
-                    Send Message
+                    {t('contact.form.submit')}
                   </>
                 )}
               </button>
 
               {submitStatus === 'success' && (
                 <div className="form-message success">
-                  Message sent successfully! I'll get back to you soon.
+                  {t('contact.form.success')}
                 </div>
               )}
               {submitStatus === 'error' && (
                 <div className="form-message error">
-                  Something went wrong. Please try again or contact me directly.
+                  {t('contact.form.error')}
                 </div>
               )}
             </form>
@@ -256,7 +257,7 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="contact-info-card">
-              <h3>Contact Information</h3>
+              <h3>{t('contact.info.title')}</h3>
               
               <div className="contact-info-list">
                 {contactInfo.map((info, index) => (
@@ -280,8 +281,8 @@ const Contact = () => {
                 <div className="contact-info-item location">
                   <div className="info-icon"><FaMapMarkerAlt /></div>
                   <div className="info-content">
-                    <span className="info-label">Location</span>
-                    <span className="info-value">Bremen, Germany</span>
+                    <span className="info-label">{t('contact.info.location')}</span>
+                    <span className="info-value">{t('contact.info.locationValue')}</span>
                   </div>
                 </div>
               </div>

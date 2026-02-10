@@ -1,0 +1,92 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "education": "Education",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "welcomeComment": "// welcome to my portfolio",
+    "exploreComment": "// feel free to explore",
+    "greeting": "Hi all. I am",
+    "role": "System Engineer",
+    "githubComment": "// find me on GitHub:",
+    "ctaButton": "Contact me",
+    "scrollHint": "scroll",
+    "asciiHint": "That's ASCII me"
+  },
+  "about": {
+    "title": "About Me",
+    "intro": "I am a <1>Systems Engineer</1> with a passion for developing innovative solutions and working on complex systems. I completed my Master's degree in Systems Engineering with a focus on Automation and Robotics at the <3>University of Bremen</3>.",
+    "description": "My journey in <1>software development</1> started during my bachelor studies, where I discovered my enthusiasm for embedded systems and system software. I enjoy tackling challenging problems and building efficient, scalable applications.",
+    "passion": "When I'm not coding, I love exploring new technologies. Outside of tech, I'm a passionate runner and swimmer, like going cycling, and enjoy hiking in the mountains. Regular fitness training is also an essential part of my routine.",
+    "skillsTitle": "Technologies I work with:",
+    "currentFocus": "Current Focus",
+    "currentFocusText": "Full-Stack Development with React, Node.js, and Cloud Technologies"
+  },
+  "education": {
+    "title": "Education",
+    "specialization": "Specialization",
+    "thesis": "Thesis",
+    "master": {
+      "degree": "M.Sc.",
+      "field": "Systems Engineering",
+      "specialization": "Automation Technology and Robotics",
+      "thesis": "Development of a system for cataloging highly variant products in expert systems",
+      "institution": "University of Bremen",
+      "period": "2023 - 2025"
+    },
+    "bachelor": {
+     "degree": "B.Sc.",
+      "field": "Systems Engineering",
+      "specialization": "Embedded Systems and System Software",
+      "thesis": "Development of an interface for automated storage of measurement data in an electronic laboratory notebook",
+      "institution": "University of Bremen",
+      "period": "2018 - 2023"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "featuredLabel": "Featured Project",
+    "viewProject": "View Project",
+    "viewCode": "View Code",
+    "viewMore": "View More on GitHub",
+    "technologies": "Technologies",
+    "description": "Description",
+    "sections": "Project Details"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's build something great together",
+    "description": "I'm always open to new opportunities and collaborations. Whether you have an idea for a project or just want to say hi, I'd love to hear from you!",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your Name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "What's this about?",
+      "message": "Message",
+      "messagePlaceholder": "Your message here...",
+      "consent": "I have read the",
+      "privacy": "Privacy Policy",
+      "consentEnd": "and accept the processing of my data.",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": "Something went wrong. Please try again or contact me directly."
+    },
+    "info": {
+      "title": "Contact Information",
+      "location": "Location",
+      "locationValue": "Bremen, Germany"
+    }
+  },
+  "footer": {
+    "designed": "Designed & Built with",
+    "by": "by Muhamed Jaber",
+    "privacy": "Privacy Policy",
+    "rights": "All rights reserved"
+  }
+}

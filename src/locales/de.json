@@ -1,0 +1,92 @@
+{
+  "nav": {
+    "home": "Start",
+    "about": "Über mich",
+    "education": "Bildung",
+    "projects": "Projekte",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "welcomeComment": "// willkommen in meinem portfolio",
+    "exploreComment": "// fühle dich frei zu erkunden",
+    "greeting": "Hi all. I am",
+    "role": "System Engineer",
+    "githubComment": "// finde mich auf GitHub:",
+    "ctaButton": "Kontaktiere mich",
+    "scrollHint": "scrollen",
+    "asciiHint": "Das bin ich in ASCII"
+  },
+  "about": {
+    "title": "Über mich",
+    "intro": "Ich bin <1>System Engineer</1> mit einer Leidenschaft für die Entwicklung innovativer Lösungen und die Arbeit an komplexen Systemen. Ich habe meinen Master-Abschluss in Systems Engineering mit Schwerpunkt Automatisierungstechnik und Robotik an der <3>Universität Bremen</3> abgeschlossen.",
+    "description": "Meine Reise in der <1>Softwareentwicklung</1> begann während meines Bachelorstudiums, wo ich meine Begeisterung für Embedded Systems und Systemsoftware entdeckte. Ich genieße es, herausfordernde Probleme anzugehen und effiziente, skalierbare Anwendungen zu entwickeln.",
+    "passion": "Wenn ich nicht programmiere, liebe ich es, neue Technologien zu erkunden. Außerhalb der Technik bin ich ein leidenschaftlicher Läufer und Schwimmer, fahre gerne Fahrrad und wandere in den Bergen. Regelmäßiges Fitnesstraining ist auch ein wesentlicher Bestandteil meiner Routine.",
+    "skillsTitle": "Technologien, mit denen ich arbeite:",
+    "currentFocus": "Aktueller Fokus",
+    "currentFocusText": "Full-Stack Development mit React, Node.js und Cloud-Technologien"
+  },
+  "education": {
+    "title": "Bildung",
+    "specialization": "Spezialisierung",
+    "thesis": "Abschlussarbeit",
+    "master": {
+      "degree": "M.Sc.",
+      "field": "Systems Engineering",
+      "specialization": "Automatisierungstechnik und Robotik",
+      "thesis": "Entwicklung eines Systems zur Katalogisierung hochvariantenreicher Produkte in Expertensystemen",
+      "institution": "Universität Bremen",
+      "period": "2023 - 2025"
+    },
+    "bachelor": {
+      "degree": "B.Sc.",
+      "field": "Systems Engineering",
+      "specialization": "Embedded Systems und Systemsoftware",
+      "thesis": "Entwicklung einer Schnittstelle zur automatisierten Speicherung von Messdaten in einem elektronischen Laborbuch",
+      "institution": "Universität Bremen",
+      "period": "2018 - 2023"
+    }
+  },
+  "projects": {
+    "title": "Projekte",
+    "featuredLabel": "Aktuelles Projekt",
+    "viewProject": "Projekt ansehen",
+    "viewCode": "Code ansehen",
+    "viewMore": "Mehr auf GitHub ansehen",
+    "technologies": "Technologien",
+    "description": "Beschreibung",
+    "sections": "Projekt-Details"
+  },
+  "contact": {
+    "title": "Kontakt aufnehmen",
+    "subtitle": "Lass uns etwas Großartiges zusammen bauen",
+    "description": "Ich bin immer offen für neue Möglichkeiten und Kooperationen. Ob du eine Idee für ein Projekt hast oder einfach nur Hallo sagen möchtest, ich freue mich von dir zu hören!",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Dein Name",
+      "email": "E-Mail",
+      "emailPlaceholder": "deine@email.com",
+      "subject": "Betreff",
+      "subjectPlaceholder": "Worum geht es?",
+      "message": "Nachricht",
+      "messagePlaceholder": "Deine Nachricht hier...",
+      "consent": "Ich habe die",
+      "privacy": "Datenschutzerklärung",
+      "consentEnd": "gelesen und akzeptiere die Verarbeitung meiner Daten.",
+      "submit": "Nachricht senden",
+      "sending": "Wird gesendet...",
+      "success": "Nachricht erfolgreich gesendet! Ich melde mich bald bei dir.",
+      "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut oder kontaktiere mich direkt."
+    },
+    "info": {
+      "title": "Kontakt-Informationen",
+      "location": "Standort",
+      "locationValue": "Bremen, Deutschland"
+    }
+  },
+  "footer": {
+    "designed": "Designed & Gebaut mit",
+    "by": "von Muhamed Jaber",
+    "privacy": "Datenschutzerklärung",
+    "rights": "Alle Rechte vorbehalten"
+  }
+}
