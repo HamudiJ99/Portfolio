@@ -103,7 +103,7 @@ const Projects = () => {
           </div>
           
           <div className="featured-image">
-            <img src="../../../public/featured-project.jpg" alt="ContentLab" className="featured-img" />
+            <img src="/featured-project.jpg" alt="ContentLab" className="featured-img" />
           </div>
         </motion.div>
 
