@@ -1,16 +1,31 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { FaGithub, FaExternalLinkAlt, FaFolder } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaFolder, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { projectsData, featuredProject } from '../../data/projectsData';
 import type { ProjectData } from '../../data/projectsData';
 import ProjectModal from './ProjectModal';
 import './Projects.css';
 
+const PROJECTS_PER_PAGE = 6;
+
 const Projects = () => {
   const { t } = useTranslation();
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const totalPages = Math.ceil(projectsData.length / PROJECTS_PER_PAGE);
+  const startIndex = currentPage * PROJECTS_PER_PAGE;
+  const currentProjects = projectsData.slice(startIndex, startIndex + PROJECTS_PER_PAGE);
+
+  const goToPreviousPage = () => {
+    setCurrentPage((prev) => Math.max(0, prev - 1));
+  };
+
+  const goToNextPage = () => {
+    setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1));
+  };
 
   const openModal = (project: ProjectData) => {
     setSelectedProject(project);
@@ -108,22 +123,35 @@ const Projects = () => {
         </motion.div>
 
         {/* Other Projects Grid */}
-        <motion.div
-          className="projects-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {projectsData.map((project) => (
+        <div className="projects-grid-container">
+          {/* Left Arrow */}
+          <button 
+            className={`pagination-arrow pagination-arrow-left ${currentPage === 0 ? 'disabled' : ''}`}
+            onClick={goToPreviousPage}
+            disabled={currentPage === 0}
+            aria-label="Previous projects"
+          >
+            <FaChevronLeft />
+          </button>
+
+          <AnimatePresence mode="wait">
             <motion.div
-              key={project.id}
-              className="project-card"
-              variants={itemVariants}
-              whileHover={{ y: -10 }}
-              onClick={() => openModal(project)}
-              style={{ cursor: 'pointer' }}
+              key={currentPage}
+              className="projects-grid"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
             >
+              {currentProjects.map((project) => (
+                <motion.div
+                  key={project.id}
+                  className="project-card"
+                  variants={itemVariants}
+                  whileHover={{ y: -10 }}
+                  onClick={() => openModal(project)}
+                  style={{ cursor: 'pointer' }}
+                >
               <div className="project-card-header">
                 <FaFolder className="folder-icon" />
                 <div className="project-links">
@@ -162,7 +190,33 @@ const Projects = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Right Arrow */}
+          <button 
+            className={`pagination-arrow pagination-arrow-right ${currentPage >= totalPages - 1 ? 'disabled' : ''}`}
+            onClick={goToNextPage}
+            disabled={currentPage >= totalPages - 1}
+            aria-label="Next projects"
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+
+        {/* Page Indicators */}
+        {totalPages > 1 && (
+          <div className="pagination-indicators">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                className={`pagination-dot ${currentPage === index ? 'active' : ''}`}
+                onClick={() => setCurrentPage(index)}
+                aria-label={`Go to page ${index + 1}`}
+              />
+            ))}
+          </div>
+        )}
 
         {/* View More Button */}
         <motion.div

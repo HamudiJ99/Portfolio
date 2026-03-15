@@ -73,7 +73,17 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                     rel="noopener noreferrer"
                     className="modal-link"
                   >
-                    <FaGithub /> {t('projects.viewCode')}
+                    <FaGithub /> {project.githubBackend ? 'Frontend' : t('projects.viewCode')}
+                  </a>
+                )}
+                {project.githubBackend && (
+                  <a
+                    href={project.githubBackend}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="modal-link"
+                  >
+                    <FaGithub /> Backend
                   </a>
                 )}
                 {project.live && (

@@ -12,6 +12,7 @@ export interface ProjectData {
   fullDescription: string;
   technologies: string[];
   github?: string;
+  githubBackend?: string;
   live?: string;
   detailSections: DetailSection[];
 }
@@ -167,6 +168,33 @@ export const projectsData: ProjectData[] = [
         img: "/assets/project6/project603.png",
         title: "Modular JavaScript Logic",
         text: "All business logic is organized in modular JavaScript files. Separate modules handle product management, cart, order processing, and delivery. This makes the application easy to maintain and extend. Data is stored in JSON files and processed in the frontend.",
+      },
+    ],
+  },
+  {
+    id: 7,
+    title: "Agent Task",
+    subtitle: "Modern Task Management Application",
+    shortDescription: "A modern task management app with checklists, deadlines, dark/light mode, and real-time sync – built with React and Spring Boot.",
+    fullDescription: "Agent Task is a modern, user-friendly task management application designed for efficient organization and tracking of tasks. The app features a clean and intuitive interface that allows users to create, edit, and manage tasks with titles, descriptions, and deadlines. Each task can include checklist items for detailed planning, and users can easily mark tasks as completed or uncompleted. The application supports both dark and light themes and is fully responsive for desktop and mobile devices. Built with React 19 and Vite 8 on the frontend, and Spring Boot 3.3.5 with PostgreSQL on the backend, the system provides real-time synchronization and excellent performance.",
+    technologies: ["Java", "Spring Boot", "PostgreSQL", "Maven", "Axios", "React", "JavaScript"],
+    github: "https://github.com/HamudiJ99/agent-task-frontend",
+    githubBackend: "https://github.com/HamudiJ99/agent-task-backend",
+    detailSections: [
+      {
+        img: "/assets/project7/project701.png",
+        title: "Full-Stack Architecture",
+        text: "The application follows a modern full-stack architecture with a clear separation between frontend and backend. The React frontend communicates with the Spring Boot REST API through well-defined endpoints for task CRUD operations. The backend uses Spring Data JPA for database access, with Hibernate handling automatic table creation and updates. PostgreSQL serves as the reliable database for persistent storage of all task data.",
+      },
+      {
+        img: "/assets/project7/project703.png",
+        title: "Responsive Design & Theming",
+        text: "The user interface is optimized for both desktop and mobile devices, providing a seamless experience across different screen sizes. The application features a built-in theme switcher that allows users to toggle between dark and light modes. Theme colors are managed through CSS variables, making customization straightforward and maintainable.",
+      },
+      {
+        img: "/assets/project7/project702.png",
+        title: "Task Management Features",
+        text: "Users can create tasks with comprehensive details including title, description, and deadline. Each task supports checklist items for breaking down complex tasks into smaller steps. The status tracking system allows marking tasks as completed or not completed with a single click. All changes sync in real-time with the backend, ensuring data consistency across sessions.",
       },
     ],
   },
